@@ -27,10 +27,11 @@ public class Calculator {
         return a / b;
     }
 
-    public int Bad_Method_Name(int NumberA, int NumberB) {
-        if (NumberA > NumberB)
-            return NumberA;
+    public int max(int numberA, int numberB) {
+        if (numberA > numberB) {
+            return numberA;
+        }
 
-        return NumberB;
+        return numberB;
     }
 }
