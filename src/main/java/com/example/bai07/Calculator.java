@@ -26,4 +26,11 @@ public class Calculator {
         logger.info("Dividing numbers: a={}, b={}", a, b);
         return a / b;
     }
+
+    public int Bad_Method_Name(int NumberA, int NumberB) {
+        if (NumberA > NumberB)
+            return NumberA;
+
+        return NumberB;
+    }
 }
