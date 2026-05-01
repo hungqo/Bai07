@@ -31,4 +31,9 @@ class CalculatorTest {
                 () -> calculator.divide(10, 0)
         );
     }
+
+    @Test
+    void testMax() {
+        assertEquals(10, calculator.max(10, 5));
+    }
 }

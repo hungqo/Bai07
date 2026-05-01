@@ -26,4 +26,12 @@ public class Calculator {
         logger.info("Dividing numbers: a={}, b={}", a, b);
         return a / b;
     }
+
+    public int max(int numberA, int numberB) {
+        if (numberA > numberB) {
+            return numberA;
+        }
+
+        return numberB;
+    }
 }
