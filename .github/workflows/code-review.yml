@@ -1,0 +1,39 @@
+name: Automated Code Review
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  build-and-review:
+    name: Build, Test and Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 with Maven cache
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Run Maven test and Checkstyle
+        run: mvn clean verify
+
+      - name: Run Checkstyle with inline PR comments
+        if: always()
+        uses: dbelyaev/action-checkstyle@v1.16.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: checkstyle.xml
+          reporter: github-pr-review
+          level: error
